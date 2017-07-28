@@ -1,4 +1,5 @@
 class MeetupsController < ApplicationController
+  before_action :authenticate_user!, expect: [:index, :show]
   def index
     @meetups = Meetup.all
   end
