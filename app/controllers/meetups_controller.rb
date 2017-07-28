@@ -3,6 +3,10 @@ class MeetupsController < ApplicationController
     @meetups = Meetup.all
   end
 
+  def show
+    @meetups = Meetup.find(params[:id])
+  end
+
   def new
     @meetup = Meetup.new
   end
@@ -16,5 +20,7 @@ class MeetupsController < ApplicationController
 
   private
 
-  params.require(:meetup).permit(:title, :description)
+  def meetup_params
+   params.require(:meetup).permit(:title, :description)
+  end
 end
