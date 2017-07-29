@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @meetup = Meetup.find(params[:message_id])
+    @meetup = Meetup.find(params[:meetup_id])
 
     @comment = Comment.new(comment_params)
     @comment.meetup_id = @meetup.id

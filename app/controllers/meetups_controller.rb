@@ -1,7 +1,11 @@
 class MeetupsController < ApplicationController
-  before_action :authenticate_user!, expect: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @meetups = Meetup.all
+  end
+
+  def new
+    @meetup = Meetup.new
   end
 
   def show
@@ -10,10 +14,6 @@ class MeetupsController < ApplicationController
 
   def edit
     @meetup = Meetup.find(params[:id])
-  end
-
-  def new
-    @meetup = Meetup.new
   end
 
   def create
@@ -41,6 +41,7 @@ class MeetupsController < ApplicationController
   private
 
   def meetup_params
-   params.require(:meetup).permit(:title, :description)
+    params.require(:meetup).permit(:title, :description)
   end
+
 end
