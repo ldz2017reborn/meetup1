@@ -1,24 +1,13 @@
-# README
+测试步骤
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1.建立账号，建立meetup活动
+2.拿token
 
-Things you may want to cover:
+curl -i -X POST -d "user[email]=admin@test.com&user[password]=12345678" http://localhost:3000/api/v1/sessions.json
 
-* Ruby version
+3.拿token请求meetup讯息
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+curl -i -X GET \
+  --header "Authorization: Token token=mSDPwft9NnGYzEFLRoaP4g9aq1s+YrclxWoQ45lkubfYbnaes4kvKATgjLFNEE3jeK5hsju4hP+3LDlIbahn2w==, \
+  email=bboyceo@hotmail.com" \
+  http://localhost:3000//api/v1/meetups
